@@ -1,0 +1,43 @@
+package xxe;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
+import org.xml.sax.InputSource;
+
+import java.io.StringReader;
+
+public class SAXBuilderTest1 {
+
+    public String getXml(String xmlStr) {
+
+        String result = unsafe(xmlStr);
+
+        if(result != null) {
+            return result;
+        }
+
+        return "XML parse error";
+    }
+
+    private String unsafe(String xmlString)
+    {
+
+        try {
+
+            SAXBuilder saxBuilder = new SAXBuilder();
+            
+
+            Document document = saxBuilder.build(new InputSource(new StringReader(xmlString)));
+
+            Element root = document.getRootElement();
+
+            return root.getText();
+
+        } catch (Exception e) {
+			e.printStackTrace();
+        }
+
+        return null;
+    }
+}

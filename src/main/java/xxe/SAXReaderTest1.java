@@ -1,0 +1,40 @@
+package xxe;
+
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+import org.xml.sax.InputSource;
+
+import java.io.StringReader;
+
+public class SAXReaderTest1 {
+
+    public String getXml(String xmlStr) {
+
+        String result = unsafe(xmlStr);
+
+        if(result != null) {
+            return result;
+        }
+
+        return "XML error";
+    }
+
+    private String unsafe(String xmlString)
+    {
+
+        try {
+            SAXReader xmlReader = new SAXReader();
+            org.dom4j.Document document = xmlReader.read(new InputSource(new StringReader(xmlString)));
+
+            Element root = document.getRootElement();
+
+            return root.getText();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+}
