@@ -1,3 +1,4 @@
+
 package sqli;
 
 import java.sql.Connection;
@@ -10,16 +11,9 @@ public class SQLTest11 {
 
     public void sqlTest11(String ip) {
         try {
-            String sql =
-                    "INSERT INTO banned_ip(id, ip) VALUE('"
-                            + UUID.randomUUID().toString()
-                            + "','"
-                            + "?"
-                            + "')";
-            PreparedStatement myPreparedStatement = getJDBCConnection().prepareStatement(sql);
-            // Setting the query parameters
-            myPreparedStatement.setString(1, ip);
-            myPreparedStatement.execute();
+            String sql = "INSERT INTO banned_ip(id, ip) VALUE('"
+                    + UUID.randomUUID().toString() + "','" + ip + "')";
+            getJDBCConnection().createStatement().execute(sql);
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
