@@ -10,7 +10,7 @@ public class DocumentBuilderFactoryTest1 {
 
     public String getXml(String xmlStr) {
 
-        Document doc = unsafe(xmlStr);
+        Document doc = unsafe(xmlStr );
 
         if (doc != null) {
             return doc.getElementsByTagName("foo").item(0).getTextContent();
@@ -19,10 +19,9 @@ public class DocumentBuilderFactoryTest1 {
         }
     }
 
-    private Document unsafe(String xmlString) {
+    private Document unsafe(String xmlString)
+    {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        // Restriction of XML External Entity Reference (CWE 611)
-        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
         DocumentBuilder builder;
         try {
             builder = factory.newDocumentBuilder();
