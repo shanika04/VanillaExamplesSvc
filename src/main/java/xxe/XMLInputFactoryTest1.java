@@ -1,3 +1,4 @@
+  
 package xxe;
 
 import java.io.FileInputStream;
@@ -13,10 +14,6 @@ public class XMLInputFactoryTest1 {
 		try {
 
 			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			// Restriction of XML External Entity Reference (CWE 611)
-			inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_DTD, false);
-			// Restriction of XML External Entity Reference (CWE 611)
-			inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_SCHEMA, false);
 			XMLStreamReader reader = inputFactory.createXMLStreamReader(new FileInputStream(filename));
 			int eventCounter = 0;
 			while (reader.hasNext()) {
