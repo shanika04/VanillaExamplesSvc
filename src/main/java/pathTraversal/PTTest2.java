@@ -5,13 +5,9 @@ import java.io.File;
 
 public class PTTest2 {
     private final String BASE_DIRECTORY = "src";
-
     public void Test(String path) {
         try {
             File dictionaryFile = new File(BASE_DIRECTORY + "abc/" + path);
-            if (dictionaryFile.getCanonicalPath().startsWith(new File("srcabc/").getCanonicalPath())) {
-                throw new PathTraversalException("invalid file path entered");
-            }
             dictionaryFile.delete();
 
         } catch (Exception ex) {
@@ -19,4 +15,5 @@ public class PTTest2 {
         }
         System.out.print("sdfsf");
     }
+
 }
