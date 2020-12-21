@@ -13,7 +13,7 @@ public class TransformerFactoryTest1 {
 
         String result = unsafe(xmlStr);
 
-        if(result != null) {
+        if (result != null) {
             return result;
         }
 
@@ -24,6 +24,8 @@ public class TransformerFactoryTest1 {
 
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            // Restriction of XML External Entity Reference (CWE 611)
+            transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             Transformer transformer = transformerFactory.newTransformer();
             StreamSource source = new StreamSource(new StringReader(xmlString));
             StringWriter writer = new StringWriter();

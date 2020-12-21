@@ -10,9 +10,16 @@ public class SQLTest1 {
 
 	public void sqlTest1(String ip) {
 		try {
-			Statement statement = getJDBCConnection().createStatement();
-			String sql = "INSERT INTO banned_ip(id, ip) VALUE('" + UUID.randomUUID().toString() + "','" + ip + "')";
-			statement.execute(sql);
+			String sql =
+					"INSERT INTO banned_ip(id, ip) VALUE('"
+							+ UUID.randomUUID().toString()
+							+ "','"
+							+ "?"
+							+ "')";
+			PreparedStatement statement = getJDBCConnection().prepareStatement(sql);
+			// Setting the query parameters
+			statement.setString(1, ip);
+			statement.execute();
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 		}

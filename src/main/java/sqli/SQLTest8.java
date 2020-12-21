@@ -9,9 +9,21 @@ import java.util.UUID;
 public class SQLTest8 {
 
     public void sqlTest8(String ip) {
-        ip = ip + ".a";
+        String ipUnsafe = null;
+        ipUnsafe = ip;
+        ip = "?" + ".a";
         try {
-            getJDBCConnection().createStatement().execute("INSERT INTO banned_ip(id, ip) VALUE('" + UUID.randomUUID().toString() + "','" + ip + "')");
+            PreparedStatement myPreparedStatement =
+                    getJDBCConnection()
+                            .prepareStatement(
+                                    "INSERT INTO banned_ip(id, ip) VALUE('"
+                                            + UUID.randomUUID().toString()
+                                            + "','"
+                                            + ip
+                                            + "')");
+            // Setting the query parameters
+            myPreparedStatement.setString(1, ipUnsafe);
+            myPreparedStatement.execute();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
