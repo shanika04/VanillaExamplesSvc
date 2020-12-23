@@ -1,5 +1,4 @@
-
-package sqli;
+package testProject;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ public class SQLTest21 {
     }
   }
 
+
   public void sink (String sql, Statement statement) {
     try {
       statement.execute(sql);
@@ -30,4 +30,6 @@ public class SQLTest21 {
   Connection getJDBCConnection() {
     return null;
   }
+
+
 }
