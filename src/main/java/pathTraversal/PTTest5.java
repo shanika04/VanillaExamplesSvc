@@ -3,7 +3,7 @@ package pathTraversal;
 import java.io.File;
 
 public class PTTest5 {
-    private final String BASE_DIRECTORY = "/users/ws/profiles/";
+    private final String BASE_DIRECTORY = "/users/sk/profiles/";
     public void Test(String filename) {
         try {
             File myFile = new File(BASE_DIRECTORY + filename);
