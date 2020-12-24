@@ -1,4 +1,4 @@
-package testProject;
+package sqli;
 
 import java.sql.Connection;
 import java.sql.SQLException;
